@@ -1,5 +1,5 @@
 {
-    "name": "robypz/laravel-mongo-roles",
+    "name": "robypz/laravel-mongo-role",
     "description": "Simple roles and permission for Laravel using MongoDB.",
     "type": "library",
     "require": {
@@ -15,7 +15,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Robypz\\LaravelMongoRoles\\": "src/"
+            "RobYpz\\MongoRole\\": "src/"
         }
     },
     "authors": [
@@ -30,5 +30,12 @@
             "pestphp/pest-plugin": true
         }
     },
-    "version": "dev-main"
+    "version": "dev-main",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Robypz\\LaravelMongoRoles\\Providers\\MongoRoleServiceProvider"
+            ]
+        }
+    }
 }
