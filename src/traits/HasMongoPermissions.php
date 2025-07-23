@@ -14,12 +14,12 @@ trait HasMongoPermissions
     public function assignPermissions(string | array $permissions)
     {
         if (is_array($permissions)) {
-            $permissions = Permission::where('permission', 'in', $permissions)->get();
+            $permissions = Permission::where('name', 'in', $permissions)->get();
             foreach ($permissions as $permission) {
                 $this->permissions()->attach($permission);
             }
         } elseif (is_string($permissions)) {
-            $permissions = Permission::where('permission', $permissions)->first();
+            $permissions = Permission::where('name', $permissions)->first();
             $this->permissions()->attach($permissions);
         }
         return $this->permissions;
@@ -28,28 +28,33 @@ trait HasMongoPermissions
     public function hasPermissions(string | array $permissions)
     {
         if (is_array($permissions)) {
-            $permissions = Permission::where('permission', 'in', $permissions)->get();
-            foreach ($permissions as $permission) {
-                $this->permissions()->attach($permission);
+            $lengt = count($permissions);
+            $permissions = $this->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions == $lengt) {
+                return true;
             }
         } elseif (is_string($permissions)) {
-            $permissions = Permission::where('permission', $permissions)->first();
-            $this->permissions()->attach($permissions);
+            $permissions = $this->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
+                return true;
+            }
         }
-        return $this->permissions;
+        return false;
     }
 
     public function hasAnyPermissions(string | array $permissions)
     {
         if (is_array($permissions)) {
-            $permissions = Permission::where('permission', 'in', $permissions)->get();
-            foreach ($permissions as $permission) {
-                $this->permissions()->attach($permission);
+            $permissions = $this->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
+                return true;
             }
         } elseif (is_string($permissions)) {
-            $permissions = Permission::where('permission', $permissions)->first();
-            $this->permissions()->attach($permissions);
+            $permissions = $this->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
+                return true;
+            }
         }
-        return $this->permissions;
+        return false;
     }
 }
