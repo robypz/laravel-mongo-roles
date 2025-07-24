@@ -1,5 +1,5 @@
 {
-    "name": "robypz/laravel-mongo-role",
+    "name": "robypz/laravel-mongo-roles",
     "description": "Simple roles and permission for Laravel using MongoDB.",
     "type": "library",
     "require": {
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Robypz\\LaravelMongoRoles\\Providers\\MongoRoleServiceProvider"
+                "Robypz\\LaravelMongoRoles\\Providers\\MongoRoleServiceProvider\\"
             ]
         }
     },
@@ -42,7 +42,8 @@
         "psr-4": {
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
+            "Tests\\": "tests/"
         }
     },
     "scripts": {

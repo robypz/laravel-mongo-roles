@@ -5,29 +5,10 @@ use RobYpz\MongoRole\Models\Role;
 
 trait HasMongoRoles
 {
-
-    use HasMongoPermissions;
-
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
-
-    public function assignRoles(string | array $roles) 
-    {
-        if (is_array($roles)) {
-            $roles = Role::where('name', 'in', $roles)->get();
-            foreach ($roles as $role) {
-                $this->roles()->attach($role);
-            }
-        } elseif (is_string($roles)) {
-            $roles = Role::where('name', $roles)->first();
-            $this->roles()->attach($roles);
-        }
-
-        return $this->roles;
-    }
-
 
 
     public function hasRoles(string | array $roles): bool
@@ -52,6 +33,39 @@ trait HasMongoRoles
             }
         } elseif (is_string($roles)) {
             if ($this->roles()->where('name', $roles)->count() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function roleHasPermissions(string | array $permissions)
+    {
+        if (is_array($permissions)) {
+            $lengt = count($permissions);
+            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions == $lengt) {
+                return true;
+            }
+        } elseif (is_string($permissions)) {
+            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function roleHasAnyPermissions(string | array $permissions)
+    {
+        if (is_array($permissions)) {
+            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
+                return true;
+            }
+        } elseif (is_string($permissions)) {
+            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            if ($permissions > 0) {
                 return true;
             }
         }
