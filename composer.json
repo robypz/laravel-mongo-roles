@@ -15,7 +15,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "RobYpz\\MongoRole\\": "src/"
+            "RobYpz\\LaravelMongoRole\\": "src/"
         }
     },
     "authors": [
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Robypz\\LaravelMongoRoles\\Providers\\MongoRoleServiceProvider\\"
+                "RobYpz\\LaravelMongoRole\\Providers\\MongoRoleServiceProvider"
             ]
         }
     },

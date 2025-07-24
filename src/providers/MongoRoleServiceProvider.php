@@ -1,6 +1,6 @@
 <?php
 
-namespace Robypz\LaravelMongoRoles\Providers;
+namespace RobYpz\LaravelMongoRole\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
