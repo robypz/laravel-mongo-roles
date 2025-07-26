@@ -7,9 +7,9 @@ use Illuminate\Contracts\Config\Repository;
 use RobYpz\LaravelMongoRole\Providers\MongoRoleServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use MongoDB\Laravel\MongoDBServiceProvider;
-use Orchestra\Testbench\Attributes\WithMigration;
 
-#[WithMigration]
+use function Orchestra\Testbench\workbench_path;
+
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use WithWorkbench, RefreshDatabase;
@@ -36,5 +36,11 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
             $config->set('queue.failed.database', 'testbench');
         });
     }
-    
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(
+            workbench_path('database/migrations')
+        );
+    }
 }
