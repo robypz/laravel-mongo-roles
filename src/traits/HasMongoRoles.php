@@ -1,5 +1,7 @@
 <?php
 
+namespace RobYpz\MongoRole\Traits;
+
 use MongoDB\Laravel\Relations\BelongsToMany;
 use RobYpz\MongoRole\Models\Role;
 

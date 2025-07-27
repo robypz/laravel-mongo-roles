@@ -15,7 +15,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "RobYpz\\LaravelMongoRole\\": "src/"
+            "RobYpz\\MongoRole\\": "src/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "authors": [
@@ -34,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RobYpz\\LaravelMongoRole\\Providers\\MongoRoleServiceProvider"
+                "RobYpz\\MongoRole\\Providers\\MongoRoleServiceProvider"
             ]
         }
     },

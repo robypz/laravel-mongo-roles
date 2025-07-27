@@ -4,22 +4,23 @@ namespace Tests;
 
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Illuminate\Contracts\Config\Repository;
-use RobYpz\LaravelMongoRole\Providers\MongoRoleServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use RobYpz\MongoRole\Providers\MongoRoleServiceProvider;
 use MongoDB\Laravel\MongoDBServiceProvider;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-use function Orchestra\Testbench\workbench_path;
+//use function Orchestra\Testbench\workbench_path;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-    use WithWorkbench, RefreshDatabase;
+    use WithWorkbench;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         // Ejecutar seeders
-        $this->artisan('db:seed');
+        $this->seed(\Workbench\Database\Seeders\DatabaseSeeder::class);
+
     }
 
     protected function getPackageProviders($app)
@@ -45,10 +46,10 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         });
     }
 
-    protected function defineDatabaseMigrations()
+    /*protected function defineDatabaseMigrations()
     {
         $this->loadMigrationsFrom(
             workbench_path('database/migrations')
         );
-    }
+    }*/
 }

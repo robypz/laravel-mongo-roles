@@ -6,7 +6,7 @@ use MongoDB\Laravel\Relations\BelongsToMany;
 
 Class Role extends Model {
 
-    public function permission() : BelongsToMany {
+    public function permissions() : BelongsToMany {
         return $this->belongsToMany(Permission::class);
     }
 }
