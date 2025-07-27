@@ -10,7 +10,7 @@ use RobYpz\MongoRole\Traits\HasMongoRoles;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Workbench\Workbench\Database\Factories\UserFactory> */
+    /** @use HasFactory<\Workbench\Workbench\Workbench\Database\Factories\UserFactory> */
     use HasFactory, Notifiable,HasMongoRoles;
 
     /**

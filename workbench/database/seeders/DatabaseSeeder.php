@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // UserFactory::new()->times(10)->create();
 
-        /*UserFactory::new()->create([
+        $user = UserFactory::new()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-        ]);*/
+        ]);
 
         //create role and permission
         $role = Role::create([
@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $role->permissions()->attach($permission);
+
+        $user->roles()->attach($role);
 
     }
 }

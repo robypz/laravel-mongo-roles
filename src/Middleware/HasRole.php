@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace RobYpz\MongoRole\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class HasRole
      */
     public function handle(Request $request, Closure $next,string ...$roles): Response
     {
-        if (!$request->user()->hasRole($roles)) {
+        if (!$request->user()->hasRoles($roles)) {
             return response(['message' => 'You dont have any role'], 403);
         }
         return $next($request);

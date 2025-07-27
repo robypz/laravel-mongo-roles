@@ -16,7 +16,7 @@ trait HasMongoRoles
     public function hasRoles(string | array $roles): bool
     {
         if (is_array($roles)) {
-            if ($this->roles()->where('name', 'in', $roles)->count() == count($roles)) {
+            if ($this->roles()->whereIn('name', $roles)->count() == count($roles)) {
                 return true;
             }
         } elseif (is_string($roles)) {
@@ -30,7 +30,7 @@ trait HasMongoRoles
     public function hasAnyRoles(string | array $roles): bool
     {
         if (is_array($roles)) {
-            if ($this->roles()->where('name', 'in', $roles)->count() > 0) {
+            if ($this->roles()->whereIn('name', $roles)->count() > 0) {
                 return true;
             }
         } elseif (is_string($roles)) {
@@ -45,12 +45,12 @@ trait HasMongoRoles
     {
         if (is_array($permissions)) {
             $lengt = count($permissions);
-            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            $permissions = $this->roles()->permissions()->whereIn('name', $permissions)->count();
             if ($permissions == $lengt) {
                 return true;
             }
         } elseif (is_string($permissions)) {
-            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
+            $permissions = $this->roles()->permissions()->whereIn('name', $permissions)->count();
             if ($permissions > 0) {
                 return true;
             }

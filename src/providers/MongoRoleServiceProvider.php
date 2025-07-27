@@ -2,7 +2,9 @@
 
 namespace RobYpz\MongoRole\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
+use RobYpz\MongoRole\Middleware\HasRole;
 
 class MongoRoleServiceProvider extends ServiceProvider
 {
@@ -14,5 +16,8 @@ class MongoRoleServiceProvider extends ServiceProvider
             __DIR__ . '/../database/migrations' => database_path('migrations'),
         ]);
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $router = $this->app['router'];
+        $router->aliasMiddleware('has-role', HasRole::class);
     }
 }

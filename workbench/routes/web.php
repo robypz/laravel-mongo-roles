@@ -9,19 +9,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', function () {
+    return response(null,200);
+})->name('login');
 //passes
-Route::get('/hasPermission', function () {
+/*Route::get('/hasPermission', function () {
     return response(null,200);
 })->middleware(HasPermission::class.':permission');
 
 Route::get('/hasAnyPermission', function () {
     return response(null,200);
-})->middleware(HasAnyPermission::class.':permission,anotherPermission');
+})->middleware(HasAnyPermission::class.':permission,anotherPermission');*/
 
 Route::get('/hasRole', function () {
     return response(null,200);
-})->middleware(HasRole::class.':role');
-
+})->middleware(['auth','has-role:role']);
+/*
 Route::get('/hasAnyRole', function () {
     return response(null,200);
 })->middleware(HasAnyRole::class.':role,anotherRole');
@@ -50,4 +54,4 @@ Route::get('/hasAnyRole', function () {
 
 Route::get('/hasAnyPermission', function () {
     return response(null,200);
-})->middleware(HasAnyPermission::class.':permission,noAnotherPermission');
+})->middleware(HasAnyPermission::class.':permission,noAnotherPermission');*/

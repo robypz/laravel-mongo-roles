@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-    use WithWorkbench;
+    use WithWorkbench,DatabaseMigrations;
 
     protected function setUp(): void
     {
