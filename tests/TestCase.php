@@ -14,6 +14,14 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use WithWorkbench, RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Ejecutar seeders
+        $this->artisan('db:seed');
+    }
+
     protected function getPackageProviders($app)
     {
         return [

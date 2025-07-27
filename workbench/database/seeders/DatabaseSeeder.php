@@ -3,6 +3,8 @@
 namespace Workbench\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use RobYpz\MongoRole\Models\Permission;
+use RobYpz\MongoRole\Models\Role;
 use Workbench\Database\Factories\UserFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -19,5 +21,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        //create role and permission
+        $role = Role::create([
+            'name'=> 'role'
+        ]);
+
+        $permission = Permission::create([
+            'name'=> 'permission'
+        ]);
+
+        $role->attach($permission);
+
     }
 }
