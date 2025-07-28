@@ -12,8 +12,6 @@ workbench:
   start: '/'
   install: true
   health: false
-  auth: true
-  user: test@example.com
   discovers:
     web: true
     api: true

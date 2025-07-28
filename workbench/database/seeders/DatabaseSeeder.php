@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        UserFactory::new()->create([
+            'name' => 'Unauthorized User',
+            'email' => 'unauthorized@example.com',
+        ]);
+
         //create role and permission
         $role = Role::create([
             'name'=> 'role'
