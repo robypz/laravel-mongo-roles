@@ -90,6 +90,14 @@ Route::get('/hasAnyRole', function () {
 Route::get('/hasAnyPermission', function () {
     return response(null,200);
 })->middleware(['auth','any_permission:permission,anotherPermission']);
+
+Route::get('/PermissionTo', function () {
+    return response(null,200);
+})->middleware(['auth','permission_to:permission']);
+
+Route::get('/hasAnyPermissionTo', function () {
+    return response(null,200);
+})->middleware(['auth','any_permission_to:permission,anotherPermission']);
 ```
 
 ### Blade Directives
@@ -110,6 +118,17 @@ Route::get('/hasAnyPermission', function () {
 @any_permission('permission,anotherPermission')
     Welcome user with any of the permissions
 @endany_permission
+
+@permission_to('permission,anotherPermission')
+    Welcome user with any of the permissions
+@endpermission_to
+
+@any_permission_to('permission,anotherPermission')
+    Welcome user with any of the permissions
+@end_any_permission_to
+
+
+
 ```
 
 ---
