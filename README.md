@@ -1,6 +1,6 @@
 # Laravel MongoDB Roles & Permissions
 
-## Logo (150px)
+## Logo
 <p align="center">
   <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
 </p>
@@ -9,34 +9,34 @@
 
 ---
 
-## Características
+## Features
 
-- Middleware para roles y permisos.
-- Directivas Blade para roles y permisos.
-- Integración con [mongodb/laravel-mongodb](https://github.com/mongodb/laravel-mongodb).
-- Migraciones y seeders listos para usar.
-- Fácil de extender y personalizar.
+- Middleware for roles and permissions.
+- Blade directives for roles and permissions.
+- Integration with [mongodb/laravel-mongodb](https://github.com/mongodb/laravel-mongodb).
+- Ready-to-use migrations and seeders.
+- Easy to extend and customize.
 
 ---
 
-## Instalación
+## Installation
 
-1. **Instala el paquete vía Composer:**
+1. **Install the package via Composer:**
 
    ```bash
    composer require robypz/laravel-mongo-roles
    ```
 
-2. **Publica y ejecuta las migraciones:**
+2. **Publish and run the migrations:**
 
    ```bash
    php artisan vendor:publish --provider="RobYpz\MongoRole\Providers\MongoRoleServiceProvider" --tag=migrations
    php artisan migrate
    ```
 
-3. **Agrega el ServiceProvider si es necesario:**
+3. **Add the ServiceProvider if necessary:**
 
-   En `config/app.php`:
+   In `config/app.php`:
 
    ```php
    'providers' => [
@@ -47,11 +47,11 @@
 
 ---
 
-## Uso
+## Usage
 
 ### Seeders
 
-Ejemplo de seeder para crear usuarios, roles y permisos:
+Example seeder to create users, roles, and permissions:
 
 ```php
 use RobYpz\MongoRole\Models\Role;
@@ -72,7 +72,7 @@ $user->roles()->attach($role);
 
 ### Middleware
 
-Protege tus rutas usando los middlewares:
+Protect your routes using the middlewares:
 
 ```php
 Route::get('/hasRole', function () {
@@ -92,23 +92,23 @@ Route::get('/hasAnyPermission', function () {
 })->middleware(['auth','any_permission:permission,anotherPermission']);
 ```
 
-### Directivas Blade
+### Blade Directives
 
 ```blade
 @role('role')
-    Bienvenido usuario con rol
+    Welcome user with role
 @endrole
 
 @permission('permission')
-    Bienvenido usuario con permiso
+    Welcome user with permission
 @endpermission
 
 @any_role('role,anotherRole')
-    Bienvenido usuario con alguno de los roles
+    Welcome user with any of the roles
 @endany_role
 
 @any_permission('permission,anotherPermission')
-    Bienvenido usuario con alguno de los permisos
+    Welcome user with any of the permissions
 @endany_permission
 ```
 
@@ -116,7 +116,7 @@ Route::get('/hasAnyPermission', function () {
 
 ## Testing
 
-Incluye pruebas con [Pest](https://pestphp.com/) y [Orchestra Testbench](https://github.com/orchestral/testbench):
+Includes tests with [Pest](https://pestphp.com/) and [Orchestra Testbench](https://github.com/orchestral/testbench):
 
 ```bash
 composer test
@@ -124,19 +124,19 @@ composer test
 
 ---
 
-## Configuración
+## Configuration
 
-Puedes personalizar la configuración en [`src/config/mongorole.php`](src/config/mongorole.php).
+You can customize the configuration in [`src/config/mongorole.php`](src/config/mongorole.php).
 
 ---
 
-## Licencia
+## License
 
 MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
 
 ---
 
-## Logo (150px)
+## Logo
 
 <p align="center">
   <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
@@ -144,13 +144,13 @@ MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
 
 ---
 
-## Estructura del paquete
+## Package Structure
 
-- `src/` Código fuente principal.
-- `workbench/` Entorno de pruebas y desarrollo.
-- `tests/` Pruebas unitarias y funcionales.
-- `art/` Recursos gráficos (logo).
+- `src/` Main source code.
+- `workbench/` Development and testing environment.
+- `tests/` Unit and functional tests.
+- `art/` Graphic resources (logo).
 
 ---
 
-¿Preguntas o sugerencias? ¡Abre un issue
+Questions or suggestions? Open an issue or contact me directly.
