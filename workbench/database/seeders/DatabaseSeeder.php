@@ -40,5 +40,7 @@ class DatabaseSeeder extends Seeder
 
         $user->roles()->attach($role);
 
+        $user->permissions()->attach($permission);
+
     }
 }

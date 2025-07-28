@@ -27,3 +27,11 @@ Route::get('/hasRole', function () {
 Route::get('/hasAnyRole', function () {
     return response(null,200);
 })->middleware(['auth','any_role:role,anotherRole']);
+
+Route::get('/hasAnyPermissionTo', function () {
+    return response(null,200);
+})->middleware(['auth','any_permission_to:permission,anotherPermission']);
+
+Route::get('/hasPermissionTo', function () {
+    return response(null,200);
+})->middleware(['auth','permission_to:permission']);

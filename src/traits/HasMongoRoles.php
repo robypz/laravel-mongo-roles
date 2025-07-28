@@ -7,6 +7,7 @@ use RobYpz\MongoRole\Models\Role;
 
 trait HasMongoRoles
 {
+    use HasMongoPermissions;
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
