@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Middleware\HasAnyPermission;
-use App\Http\Middleware\HasAnyRole;
-use App\Http\Middleware\HasPermission;
-use App\Http\Middleware\HasRole;
+use App\Http\Middleware\AnyPermission;
+use App\Http\Middleware\AnyRole;
+use App\Http\Middleware\Permission;
+use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,16 +14,16 @@ Route::get('/', function () {
 //successfully passes
 Route::get('/hasPermission', function () {
     return response(null,200);
-})->middleware(['auth','has-permission:permission']);
+})->middleware(['auth','permission:permission']);
 
 Route::get('/hasAnyPermission', function () {
     return response(null,200);
-})->middleware(['auth','has-any-permission:permission,anotherPermission']);
+})->middleware(['auth','any_permission:permission,anotherPermission']);
 
 Route::get('/hasRole', function () {
     return response(null,200);
-})->middleware(['auth','has-role:role']);
+})->middleware(['auth','role:role']);
 
 Route::get('/hasAnyRole', function () {
     return response(null,200);
-})->middleware(['auth','has-any-role:role,anotherRole']);
+})->middleware(['auth','any_role:role,anotherRole']);
