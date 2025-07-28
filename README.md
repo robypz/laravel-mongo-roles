@@ -172,4 +172,58 @@ MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
 
 ---
 
+## Traits: HasMongoRoles & HasMongoPermissions
+
+### HasMongoRoles
+
+Add the `HasMongoRoles` trait to your User model to enable role and permission management via MongoDB.
+
+#### Methods
+
+- **roles()**  
+  Returns the roles related to the user.
+
+- **hasRole(string|array $roles): bool**  
+  Returns `true` if the user has all the specified roles.
+
+- **hasAnyRole(string|array $roles): bool**  
+  Returns `true` if the user has at least one of the specified roles.
+
+- **hasPermission(string|array $permissions): bool**  
+  Returns `true` if the user has all the specified permissions through their roles.
+
+- **hasAnyPermission(string|array $permissions): bool**  
+  Returns `true` if the user has at least one of the specified permissions through their roles.
+
+### HasMongoPermissions
+
+> This trait provides an alternative approach: assign permissions directly to users, without roles.  
+> **Note:** `HasMongoPermissions` is already included in `HasMongoRoles`, so you do not need to add both.
+
+#### Methods
+
+- **permissions()**  
+  Returns the permissions related to the user.
+
+- **hasPermissionTo(string|array $permissions): bool**  
+  Returns `true` if the user has all the specified direct permissions.
+
+- **hasAnyPermissionTo(string|array $permissions): bool**  
+  Returns `true` if the user has at least one of the specified direct permissions.
+
+---
+
+Add the trait to your User model:
+
+```php
+use RobYpz\MongoRole\Traits\HasMongoRoles;
+
+class User extends Authenticatable
+{
+    use HasMongoRoles; // Includes HasMongoPermissions
+    // ...
+```
+
+---
+
 Questions or suggestions? Open an issue or contact me directly.
