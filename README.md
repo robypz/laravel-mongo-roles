@@ -133,9 +133,9 @@ MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
 
 ---
 
-## Logo
+## Logo (150px)
 
-![Logo](/art/remove%20the%20checkmark.png)
+![Logo](/art/remove%20the%20checkmark.png){width=150px}
 
 ---
 
