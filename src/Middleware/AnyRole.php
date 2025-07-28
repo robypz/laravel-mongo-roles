@@ -16,7 +16,7 @@ class AnyRole
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if (!$request->user()->hasAnyRole($roles)) {
-            return response(['message' => 'You dont have any role'], 403);
+            abort(403,'You dont have any role');
         }
 
         return $next($request);

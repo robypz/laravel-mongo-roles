@@ -16,7 +16,7 @@ class AnyPermission
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if (!$request->user()->hasAnyPermission($roles)) {
-            return response(['message' => 'You dont have any permission'], 403);
+            abort(403,'You dont have permission');
         }
         return $next($request);
     }

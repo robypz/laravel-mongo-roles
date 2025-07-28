@@ -16,7 +16,7 @@ class MongoRoleServiceProvider extends ServiceProvider
 {
     public function register() {}
 
-    public function boot()
+    public function boot() : void
     {
         //Publish Migrations
         $this->publishesMigrations([

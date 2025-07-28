@@ -16,7 +16,7 @@ class PermissionTo
     public function handle(Request $request, Closure $next, string ...$permission): Response
     {
         if (!$request->user()->hasPermissionTo($permission)) {
-            return response(['message' => 'You dont have permission'], 403);
+            abort(403,'You dont have permission');
         }
 
         return $next($request);

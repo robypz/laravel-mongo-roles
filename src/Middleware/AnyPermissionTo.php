@@ -16,7 +16,7 @@ class AnyPermissionTo
     public function handle(Request $request, Closure $next, string ...$permission): Response
     {
         if (!$request->user()->hasAnyPermissionTo($permission)) {
-            return response(['message' => 'You dont have any permission'], 403);
+            abort(403,'You dont have any permission');
         }
 
         return $next($request);
