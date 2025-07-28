@@ -1,6 +1,6 @@
 # Laravel MongoDB Roles & Permissions
 
-![Logo](/art/remove%20the%20checkmark.png)
+![Logo](/art/remove%20the%20checkmark.png){width=150px}
 
 **Simple roles and permissions for Laravel using MongoDB.**
 
