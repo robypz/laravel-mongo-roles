@@ -131,47 +131,6 @@ Route::get('/hasAnyPermissionTo', function () {
 
 ```
 
----
-
-## Testing
-
-Includes tests with [Pest](https://pestphp.com/) and [Orchestra Testbench](https://github.com/orchestral/testbench):
-
-```bash
-composer test
-```
-
----
-
-## Configuration
-
-You can customize the configuration in [`src/config/mongorole.php`](src/config/mongorole.php).
-
----
-
-## License
-
-MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
-
----
-
-## Logo
-
-<p align="center">
-  <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
-</p>
-
----
-
-## Package Structure
-
-- `src/` Main source code.
-- `workbench/` Development and testing environment.
-- `tests/` Unit and functional tests.
-- `art/` Graphic resources (logo).
-
----
-
 ## Traits: HasMongoRoles & HasMongoPermissions
 
 ### HasMongoRoles
@@ -225,5 +184,46 @@ class User extends Authenticatable
 ```
 
 ---
+
+## Testing
+
+Includes tests with [Pest](https://pestphp.com/) and [Orchestra Testbench](https://github.com/orchestral/testbench):
+
+```bash
+composer test
+```
+
+---
+
+## Configuration
+
+You can customize the configuration in [`src/config/mongorole.php`](src/config/mongorole.php).
+
+---
+
+## License
+
+MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
+
+---
+
+## Logo
+
+<p align="center">
+  <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
+</p>
+
+---
+
+## Package Structure
+
+- `src/` Main source code.
+- `workbench/` Development and testing environment.
+- `tests/` Unit and functional tests.
+- `art/` Graphic resources (logo).
+
+---
+
+
 
 Questions or suggestions? Open an issue or contact me directly.
