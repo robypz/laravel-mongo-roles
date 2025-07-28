@@ -19,7 +19,7 @@ class MongoRoleServiceProvider extends ServiceProvider
     public function boot()
     {
         //Publish Migrations
-        $this->publishes([
+        $this->publishesMigrations([
             __DIR__ . '/../database/migrations/' => database_path('migrations'),
         ], 'laravel-assets');
 
