@@ -1,7 +1,9 @@
 # Laravel MongoDB Roles & Permissions
 
 ## Logo (150px)
-<img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
+<p align="center">
+  <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
+</p>
 
 **Simple roles and permissions for Laravel using MongoDB.**
 
@@ -136,7 +138,9 @@ MIT © [Robert Yepez](mailto:robertyepez0208@hotmail.com)
 
 ## Logo (150px)
 
-<img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
+<p align="center">
+  <img src="/art/remove%20the%20checkmark.png" alt="Logo" width="150"/>
+</p>
 
 ---
 
