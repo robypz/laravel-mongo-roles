@@ -13,61 +13,37 @@ trait HasMongoRoles
     }
 
 
-    public function hasRoles(string | array $roles): bool
+    public function hasRole(string | array $roles): bool
     {
-        if (is_array($roles)) {
-            if ($this->roles()->whereIn('name', $roles)->count() == count($roles)) {
-                return true;
-            }
-        } elseif (is_string($roles)) {
-            if ($this->roles()->where('name', $roles)->count() > 0) {
+        if ($this->roles()->whereIn('name', $roles)->count() == count($roles)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function hasAnyRole(string | array $roles): bool
+    {
+        if ($this->roles()->whereIn('name', $roles)->count() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function hasPermission(string|array $permissions): bool
+    {
+        foreach ($this->roles as $role) {
+            if ($role->permissions()->whereIn('name', $permissions)->count() == count($permissions)) {
                 return true;
             }
         }
         return false;
     }
 
-    public function hasAnyRoles(string | array $roles): bool
-    {
-        if (is_array($roles)) {
-            if ($this->roles()->whereIn('name', $roles)->count() > 0) {
-                return true;
-            }
-        } elseif (is_string($roles)) {
-            if ($this->roles()->where('name', $roles)->count() > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public function roleHasPermissions(string | array $permissions)
+    public function hasAnyPermission(string | array $permissions)
     {
-        if (is_array($permissions)) {
-            $lengt = count($permissions);
-            $permissions = $this->roles()->permissions()->whereIn('name', $permissions)->count();
-            if ($permissions == $lengt) {
-                return true;
-            }
-        } elseif (is_string($permissions)) {
-            $permissions = $this->roles()->permissions()->whereIn('name', $permissions)->count();
-            if ($permissions > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function roleHasAnyPermissions(string | array $permissions)
-    {
-        if (is_array($permissions)) {
-            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
-            if ($permissions > 0) {
-                return true;
-            }
-        } elseif (is_string($permissions)) {
-            $permissions = $this->roles()->permissions()->where('name', 'in', $permissions)->count();
-            if ($permissions > 0) {
+        foreach ($this->roles as $role) {
+            if ($role->permissions()->whereIn('name', $permissions)->count() > 0) {
                 return true;
             }
         }
