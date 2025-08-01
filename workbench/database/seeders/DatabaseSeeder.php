@@ -29,18 +29,27 @@ class DatabaseSeeder extends Seeder
 
         //create role and permission
         $role = Role::create([
-            'name'=> 'role'
+            'name' => 'role'
+        ]);
+
+        $role1 = Role::create([
+            'name' => 'role1'
         ]);
 
         $permission = Permission::create([
-            'name'=> 'permission'
+            'name' => 'permission'
+        ]);
+
+        $permission1 = Permission::create([
+            'name' => 'permission1'
         ]);
 
         $role->permissions()->attach($permission);
 
         $user->roles()->attach($role);
+        $user->roles()->attach($role1);
 
         $user->permissions()->attach($permission);
-
+        $user->permissions()->attach($permission1);
     }
 }

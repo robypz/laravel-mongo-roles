@@ -42,7 +42,7 @@ trait HasMongoRoles
     }
 
 
-    public function hasAnyPermission(string | array $permissions)
+    public function hasAnyPermission(string | array $permissions) : bool
     {
         foreach ($this->roles as $role) {
             if ($role->permissions()->whereIn('name', $permissions)->count() > 0) {
@@ -50,5 +50,17 @@ trait HasMongoRoles
             }
         }
         return false;
+    }
+
+    public function assignRole(string | array $roles): void  {
+        foreach (Role::whereIn('name', $roles) as $role) {
+            $this->roles()->attach($role);
+        }
+    }
+
+    public function revokeRole(string | array $roles): void  {
+        foreach (Role::whereIn('name', $roles) as $role) {
+            $this->roles()->detach($role);
+        }
     }
 }

@@ -28,4 +28,18 @@ trait HasMongoPermissions
         }
         return false;
     }
+
+    public function assignPermissionTo(string | array $permissions): void
+    {
+        foreach (Permission::whereIn('name', $permissions) as $permission) {
+            $this->permissions()->attach($permission);
+        }
+    }
+
+    public function revokePermissionTo(string | array $permissions): void
+    {
+        foreach (Permission::whereIn('name', $permissions) as $permission) {
+            $this->permissions()->detach($permission);
+        }
+    }
 }
