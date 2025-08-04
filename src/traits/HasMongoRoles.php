@@ -53,13 +53,13 @@ trait HasMongoRoles
     }
 
     public function assignRole(string | array $roles): void  {
-        foreach (Role::whereIn('name', $roles) as $role) {
+        foreach (Role::whereIn('name', $roles)->get() as $role) {
             $this->roles()->attach($role);
         }
     }
 
     public function revokeRole(string | array $roles): void  {
-        foreach (Role::whereIn('name', $roles) as $role) {
+        foreach (Role::whereIn('name', $roles)->get() as $role) {
             $this->roles()->detach($role);
         }
     }

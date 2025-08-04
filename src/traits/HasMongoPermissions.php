@@ -31,14 +31,14 @@ trait HasMongoPermissions
 
     public function assignPermissionTo(string | array $permissions): void
     {
-        foreach (Permission::whereIn('name', $permissions) as $permission) {
+        foreach (Permission::whereIn('name', $permissions)->get() as $permission) {
             $this->permissions()->attach($permission);
         }
     }
 
     public function revokePermissionTo(string | array $permissions): void
     {
-        foreach (Permission::whereIn('name', $permissions) as $permission) {
+        foreach (Permission::whereIn('name', $permissions)->get() as $permission) {
             $this->permissions()->detach($permission);
         }
     }
