@@ -190,7 +190,7 @@ class User extends Authenticatable
 Includes tests with [Pest](https://pestphp.com/) and [Orchestra Testbench](https://github.com/orchestral/testbench):
 
 ```bash
-composer test
+./vendor/bin/pest ./tests/Feature
 ```
 
 ---
